@@ -2,19 +2,12 @@ const express = require("express");
 const mysql = require("mysql");
 const cors = require("cors");
 
-//Session Login
-const bcrypt = require("bcrypt");
-const saltRounds = 10;
-const bodyParser = require("body-parser");
-const cookieParser = require("cookie-parser");
-const session = require("express-session");
-
-const PORT = 3002;
+const PORT = 3005;
 const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: [`http://localhost:${process.env.PORT || PORT}`],
+    origin: "*",
     methods: ["GET", "POST"],
     credentials: true,
   }),
@@ -23,8 +16,7 @@ app.use(
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     next();
-  },
-  cookieParser()
+  }
 );
 
 const db = mysql.createConnection({
@@ -40,6 +32,10 @@ app.get("/", (req, res) => {
     res.send(rows);
   });
 });
+
+setInterval(function () {
+  db.query("SELECT 1");
+}, 5000);
 
 app.listen(process.env.PORT || PORT, () => {
   console.log(`running server on ${PORT}`);

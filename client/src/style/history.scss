@@ -1,0 +1,22 @@
+.history_container {
+  .history_item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .num1,
+    .num2,
+    .zipcode,
+    .state {
+      padding: 15px;
+      border: 1px solid #000;
+    }
+    .num1,
+    .num2,
+    .zipcode {
+      width: 40px;
+    }
+    .state {
+      width: 100px;
+    }
+  }
+}
