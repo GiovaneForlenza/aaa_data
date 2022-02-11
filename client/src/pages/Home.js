@@ -7,14 +7,12 @@ function Home() {
   const [zipCode, setZipCode] = useState("");
   const [requestType, setRequestType] = useState("battery");
   const [hasSubmitted, setHasSubmitted] = useState(false);
-
+  // b03d5e40506bff
+  // 0268d591
+  // us-cdbr-east-05.cleardb.net
   function handleSubmit(e) {
     e.preventDefault();
     setHasSubmitted(true);
-
-    if (membershipNumber.length === 0) {
-      console.log("no membership");
-    }
   }
   return (
     <div className="home_container">

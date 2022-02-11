@@ -9,11 +9,12 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
 
+const PORT = 3002;
 const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: ["http://localhost:3000"],
+    origin: [`http://localhost:${process.env.PORT || PORT}`],
     methods: ["GET", "POST"],
     credentials: true,
   }),
@@ -27,12 +28,19 @@ app.use(
 );
 
 const db = mysql.createConnection({
-  user: "root",
-  host: "localhost",
-  password: "Password",
-  database: "DbName",
+  user: "b03d5e40506bff",
+  host: "us-cdbr-east-05.cleardb.net",
+  password: "0268d591",
+  database: "heroku_3ebec310b51ec4a",
 });
 
-app.listen(3002, () => {
-  console.log("running server on 3002");
+app.get("/", (req, res) => {
+  db.query("SELECT * FROM aaa_data", (error, rows) => {
+    if (error) throw error;
+    res.send(rows);
+  });
+});
+
+app.listen(process.env.PORT || PORT, () => {
+  console.log(`running server on ${PORT}`);
 });
