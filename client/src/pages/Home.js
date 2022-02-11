@@ -29,7 +29,7 @@ function Home() {
       .then((data) => console.log(data))
       .catch((err) => console.error(err));
 
-    Axios.post(`${localhost}/add`, {
+    Axios.post(`${herokuURL}/add`, {
       membership: membershipNumber,
       zipcode: zipCode,
       requestType: requestType,
