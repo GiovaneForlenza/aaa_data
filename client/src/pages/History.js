@@ -14,18 +14,20 @@ function History() {
   }, []);
   return (
     <div className="history_container">
-      {history.length > 0
-        ? history.map((entry, id) => {
-            return (
-              <div className="history_item" key={id}>
-                <div className="num1">{entry.club_code_1}</div>
-                <div className="num2">{entry.club_code_2}</div>
-                <div className="zipcode">{entry.zipcode}</div>
-                <div className="state">{entry.state_name}</div>
-              </div>
-            );
-          })
-        : null}
+      {history.length > 0 ? (
+        history.map((entry, id) => {
+          return (
+            <div className="history_item" key={id}>
+              <div className="num1">{entry.club_code_1}</div>
+              <div className="num2">{entry.club_code_2}</div>
+              <div className="zipcode">{entry.zipcode}</div>
+              <div className="state">{entry.state_name}</div>
+            </div>
+          );
+        })
+      ) : (
+        <div className="loading">Loading....</div>
+      )}
     </div>
   );
 }

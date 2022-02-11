@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import Axios from "axios";
 import "../style/home.scss";
 
 function Home() {
@@ -7,12 +7,35 @@ function Home() {
   const [zipCode, setZipCode] = useState("");
   const [requestType, setRequestType] = useState("battery");
   const [hasSubmitted, setHasSubmitted] = useState(false);
-  // b03d5e40506bff
-  // 0268d591
-  // us-cdbr-east-05.cleardb.net
+
+  const herokuURL = "https://aaa-data.herokuapp.com/";
+  const localhost = "http://localhost:3005";
+
+  const ZIP_API_KEY = "f51d56d33e3fb8f1b5094821c1125ad9";
+  const ZIP_API_URL = "https://service.zipapi.us/zipcode/";
+
   function handleSubmit(e) {
     e.preventDefault();
     setHasSubmitted(true);
+
+    const url = `${ZIP_API_URL}${zipCode}/?X-API-KEY=[${ZIP_API_KEY}]`;
+
+    // Axios.get(url).then((res) => {
+    //   console.log(res);
+    // });
+
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => console.log(data))
+      .catch((err) => console.error(err));
+
+    Axios.post(`${localhost}/add`, {
+      membership: membershipNumber,
+      zipcode: zipCode,
+      requestType: requestType,
+    }).then((res) => {
+      console.log(res);
+    });
   }
   return (
     <div className="home_container">
