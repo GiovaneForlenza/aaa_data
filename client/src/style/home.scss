@@ -31,6 +31,24 @@
         margin: 10px;
         color: red;
       }
+      .submit {
+        background: #003893;
+        color: white;
+        border: none;
+        font-size: 15px;
+        box-sizing: border-box;
+        border-radius: 50px;
+      }
+      .request_type_container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        grid-column-gap: 30px;
+        grid-row-gap: 30px;
+        // border: 1px solid #000;
+        margin: 20px;
+        user-select: none;
+      }
     }
   }
 }

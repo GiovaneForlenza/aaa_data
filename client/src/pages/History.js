@@ -22,6 +22,7 @@ function History() {
               <div className="num2">{entry.club_code_2}</div>
               <div className="zipcode">{entry.zipcode}</div>
               <div className="state">{entry.state_name}</div>
+              <div className="state">{entry.service_type}</div>
             </div>
           );
         })
