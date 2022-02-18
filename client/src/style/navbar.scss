@@ -1,10 +1,16 @@
 .navbar_container {
-  border: 1px solid #000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: row;
-  margin-bottom: 20px;
+  position: relative;
+  // top: 10px;
+  .buttons {
+    border: 1px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    margin-bottom: 20px;
+    width: 100%;
+    top: 0px;
+  }
   .button {
     border: 1px solid #000;
     padding: 10px;

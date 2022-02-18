@@ -5,17 +5,14 @@ import RequestType from "../components/RequestType";
 
 function Home() {
   const [membershipNumber, setMembershipNumber] = useState("");
-  const [zipCode, setZipCode] = useState("");
+  const [zipCode, setZipCode] = useState("11111");
   const [requestType, setRequestType] = useState("");
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [isRequestActive, setIsRequestActive] = useState(false);
   const [activeRequest, setActiveRequest] = useState([0, 0, 0, 0, 0, 0, 0, 0]);
 
   const herokuURL = "https://aaa-data.herokuapp.com";
-  const localhost = "http://localhost:3005";
-
-  const ZIP_API_KEY = "f51d56d33e3fb8f1b5094821c1125ad9";
-  const ZIP_API_URL = "https://service.zipapi.us/zipcode/";
+  const localhost = "http://localhost:3001";
 
   const serviceName = [
     "BATTERY",
@@ -51,30 +48,27 @@ function Home() {
       "https://drrweb.national.aaa.com/assets/images/icons/car%20wont%20start.svg",
     TOW: "https://drrweb.national.aaa.com/assets/images/icons/tow-small.svg",
   };
+  const ZIP_API_URL = "https://service.zipapi.us/zipcode/";
+  const ZIP_API_KEY = "f51d56d33e3fb8f1b5094821c1125ad9";
 
   function handleSubmit(e) {
     e.preventDefault();
     setHasSubmitted(true);
 
-    const url = `${ZIP_API_URL}${zipCode}/?X-API-KEY=[${ZIP_API_KEY}]`;
-
-    // Axios.get(url).then((res) => {
-    //   console.log(res);
-    // });
-
-    // fetch(url)
-    //   .then((response) => response.json())
-    //   .then((data) => console.log(data))
-    //   .catch((err) => console.error(err));
-
-    Axios.post(`${herokuURL}/add`, {
-      membership: membershipNumber,
-      zipcode: zipCode,
-      requestType: requestType,
-    }).then((res) => {
-      console.log(res);
-      alert("posted");
-    });
+    if (membershipNumber.length === 6 && zipCode.length === 5) {
+      // Axios.post(`${herokuURL}/add`, {
+      //   membership: membershipNumber,
+      //   zipcode: zipCode,
+      //   requestType: requestType,
+      // }).then((res) => {
+      //   console.log(res);
+      // });
+      // document.getElementById("input_membership_num").value = "";
+      // document.getElementById("input_zipcode").value = "";
+      Axios.get("/getStateFromZipcode").then((response) => {
+        console.log(response);
+      });
+    }
   }
 
   return (
@@ -100,6 +94,7 @@ function Home() {
             type="text"
             name="zipcode"
             id="input_zipcode"
+            // value={"11111"}
             onChange={(e) => {
               setZipCode(e.target.value);
             }}
@@ -128,11 +123,10 @@ function Home() {
             })}
           </div>
         </div>
-        <div className="line">
+        <div className="line submit">
           <input
             type="submit"
             value="Submit"
-            className="submit"
             onClick={(e) => {
               handleSubmit(e);
             }}

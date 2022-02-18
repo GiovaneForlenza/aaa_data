@@ -1,7 +1,6 @@
 .home_container {
   width: 50%;
   margin: auto;
-  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -10,11 +9,9 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    // width: 70%;
     .line {
       width: 100%;
       margin: 10px;
-      // height: 40px;
       label {
         display: inline-block;
         width: 180px;
@@ -31,23 +28,32 @@
         margin: 10px;
         color: red;
       }
-      .submit {
-        background: #003893;
-        color: white;
-        border: none;
-        font-size: 15px;
-        box-sizing: border-box;
-        border-radius: 50px;
-      }
       .request_type_container {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         grid-template-rows: repeat(2, 1fr);
         grid-column-gap: 30px;
         grid-row-gap: 30px;
-        // border: 1px solid #000;
         margin: 20px;
         user-select: none;
+      }
+    }
+    .line.submit {
+      width: 50%;
+      input {
+        height: 50px;
+        background: #003893;
+        color: white;
+        border: none;
+        font-size: 25px;
+        box-sizing: border-box;
+        border-radius: 50px;
+        &:hover {
+          cursor: pointer;
+        }
+        &:active {
+          background: #012d75;
+        }
       }
     }
   }
