@@ -25,6 +25,7 @@ function Data() {
     Axios.post(netiflyURL + "/getRequests").then((data) => {
       setCalls(data.data);
     });
+    console.log(calls);
     setShowMap(true);
   }, []);
 
