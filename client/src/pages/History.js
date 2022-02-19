@@ -6,7 +6,7 @@ function History() {
   const herokuURL = "https://aaa-data.herokuapp.com/";
   const localhost = "http://localhost:3001";
   const [history, setHistory] = useState([]);
-  console.log(history);
+  // console.log(history);
   useEffect(() => {
     Axios.get(herokuURL + "getHistory").then((data) => {
       setHistory(data.data);

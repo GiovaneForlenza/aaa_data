@@ -56,18 +56,24 @@ function Home() {
     setHasSubmitted(true);
 
     if (membershipNumber.length === 6 && zipCode.length === 5) {
-      // Axios.post(`${herokuURL}/add`, {
-      //   membership: membershipNumber,
-      //   zipcode: zipCode,
-      //   requestType: requestType,
-      // }).then((res) => {
-      //   console.log(res);
-      // });
-      // document.getElementById("input_membership_num").value = "";
-      // document.getElementById("input_zipcode").value = "";
-      Axios.get("/getStateFromZipcode").then((response) => {
-        console.log(response);
-      });
+      let stateName = "aa";
+      fetch("http://api.zippopotam.us/us/" + zipCode)
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (jsonResponse) {
+          stateName = jsonResponse.places[0].state;
+          Axios.post(`${herokuURL}/add`, {
+            membership: membershipNumber,
+            zipcode: zipCode,
+            stateName: stateName,
+            requestType: requestType,
+          }).then((res) => {
+            console.log(res);
+          });
+          document.getElementById("input_membership_num").value = "";
+          document.getElementById("input_zipcode").value = "";
+        });
     }
   }
 

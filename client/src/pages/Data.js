@@ -11,7 +11,7 @@ function Data() {
     region: "US",
     displayMode: "regions",
     resolution: "provinces",
-    colorAxis: { colors: ["#00853f", "black", "#e31b23"] },
+    colorAxis: { colors: ["#e31b23", "#00853f"] },
     datalessRegionColor: "#f8bbd0",
     defaultColor: "#f5f5f5",
   };
@@ -20,8 +20,9 @@ function Data() {
 
   const herokuURL = "https://aaa-data.herokuapp.com";
   const localhost = "http://localhost:3001";
+  const netiflyURL = "https://aaa-data.netlify.app";
   useEffect(() => {
-    Axios.post(localhost + "/getRequests").then((data) => {
+    Axios.post(netiflyURL + "/getRequests").then((data) => {
       setCalls(data.data);
     });
     setShowMap(true);
@@ -97,7 +98,7 @@ function Data() {
   }
 
   const concatArray = [].concat(header, states);
-  console.log(concatArray);
+  // console.log(concatArray);
 
   countRequests();
   return (
