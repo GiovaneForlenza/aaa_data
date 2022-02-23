@@ -22,7 +22,7 @@ function Data() {
   const localhost = "http://localhost:3001";
   const netiflyURL = "https://aaa-data.netlify.app";
   useEffect(() => {
-    Axios.post(netiflyURL + "/getRequests").then((data) => {
+    Axios.post(herokuURL + "/getRequests").then((data) => {
       setCalls(data.data);
     });
     console.log(calls);
