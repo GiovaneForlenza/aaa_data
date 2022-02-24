@@ -11,7 +11,7 @@ function Data() {
     region: "US",
     displayMode: "regions",
     resolution: "provinces",
-    colorAxis: { colors: ["#FFF6F6", "#16CC13"] },
+    colorAxis: { colors: ["#DAE3F3", "#2F5597"] },
     datalessRegionColor: "#f8bbd0",
     defaultColor: "#f5f5f5",
   };
