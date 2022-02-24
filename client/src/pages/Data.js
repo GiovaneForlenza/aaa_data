@@ -115,6 +115,18 @@ function Data() {
       ) : (
         <p>Loading...</p>
       )}
+      <div className="states-request">
+        {concatArray.map((request, id) => {
+          if (id > 0) {
+            return (
+              <div className="container">
+                <div className="state">{request[0]}</div>
+                <div className="state">{request[1]}</div>
+              </div>
+            );
+          }
+        })}
+      </div>
     </div>
   );
 }
