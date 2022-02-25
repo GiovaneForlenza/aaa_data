@@ -1,0 +1,30 @@
+version: '3.2'
+services:
+  client:
+    build: 
+      context: ./client/
+    ports: 
+      - "80:80"
+  server: 
+    build: 
+      context: ./server/
+    environment:
+      USER: root
+      HOST: database
+      PASSWORD: root
+      DATABASE: heroku_3ebec310b51ec4a
+      PORT: 3301
+    ports:
+      - "8080:3301"
+  database:
+    image: mysql:5.7
+    volumes:
+      - db-data:/var/lib/mysql
+      - ./server/initdb/:/docker-entrypoint-initdb.d/
+    environment: 
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: heroku_3ebec310b51ec4a
+
+
+volumes:
+  db-data:
