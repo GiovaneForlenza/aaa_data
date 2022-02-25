@@ -9,6 +9,7 @@ function History({ herokuURL }) {
   useEffect(() => {
     Axios.get(herokuURL + "/getHistory").then((data) => {
       setHistory(data.data);
+      // console.log(data.data);
     });
   }, []);
 

@@ -89,8 +89,8 @@ function Data({ herokuURL }) {
       "Fuel",
       { role: "annotation" },
     ],
-    ["Alabama", 10, 20, 30, 40, 50, ""],
-    ["Alaska", 10, 20, 30, 40, 50, ""],
+    ["Alabama", 10, 20, 30, 40, 10, ""],
+    ["Alaska", 10, 20, 30, 40, 0, ""],
     ["Arizona", 10, 20, 30, 40, 50, ""],
     ["Arkansas", 10, 20, 30, 40, 50, ""],
     ["California", 10, 20, 30, 40, 50, ""],
@@ -130,11 +130,12 @@ function Data({ herokuURL }) {
               options={{
                 legend: { position: "top", maxLines: 3 },
                 bar: { groupWidth: "75%" },
-                isStacked: "percent",
-                hAxis: {
-                  minValue: 0,
-                  ticks: [0, 0.3, 0.6, 0.9, 1],
-                },
+                // isStacked: "percent",
+                isStacked: true,
+                // hAxis: {
+                //   minValue: 0,
+                //   ticks: [0, 0.3, 0.6, 0.9, 1],
+                // },
               }}
               data={statesa}
               height="100%"
@@ -162,24 +163,26 @@ function Data({ herokuURL }) {
               mapsApiKey={API_KEY}
             />
           </div>
-          {/* <Chart
-            options={{
-              title: "Requests per State",
-              // is3D: true,
-              // slices: {
-              //   8: { offset: 0.2 },
-              //   9: { offset: 0.3 },
-              //   12: { offset: 0.4 },
-              //   13 : { offset: 0.5 },
-              //   21: { offset: 0.5 },
-              // },
-              sliceVisibilityThreshold: 0.05,
-            }}
-            data={concatArray}
-            height="100%"
-            width="100%"
-            chartType="PieChart"
-          /> */}
+          <div className="map">
+            <Chart
+              options={{
+                title: "Requests per State",
+                is3D: true,
+                // slices: {
+                //   8: { offset: 0.2 },
+                //   9: { offset: 0.3 },
+                //   12: { offset: 0.4 },
+                //   13: { offset: 0.5 },
+                //   21: { offset: 0.5 },
+                // },
+                sliceVisibilityThreshold: 0.05,
+              }}
+              data={concatArray}
+              height="100%"
+              width="100%"
+              chartType="PieChart"
+            />
+          </div>
         </div>
       ) : (
         <p>Loading...</p>
