@@ -9,16 +9,6 @@ function Home() {
   const [requestType, setRequestType] = useState("");
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [isRequestActive, setIsRequestActive] = useState(false);
-  // const [activeRequest, setActiveRequest] = useState([
-  //   { id: 0, isActive: 0 },
-  //   { id: 1, isActive: 0 },
-  //   { id: 2, isActive: 0 },
-  //   { id: 3, isActive: 0 },
-  //   { id: 4, isActive: 0 },
-  //   { id: 5, isActive: 0 },
-  //   { id: 6, isActive: 0 },
-  //   { id: 7, isActive: 0 },
-  // ]);
   const activeRequest = [0, 0, 0, 0, 0, 0, 0, 0];
 
   const herokuURL = "https://aaa-data.herokuapp.com";
@@ -73,23 +63,20 @@ function Home() {
         })
         .then(function (jsonResponse) {
           stateName = jsonResponse.places[0].state;
-          // Axios.post(`${herokuURL}/add`, {
-          //   membership: membershipNumber,
-          //   zipcode: zipCode,
-          //   stateName: stateName,
-          //   requestType: requestType,
-          // }).then((res) => {
-          //   console.log(res);
-          // });
+          Axios.post(`${herokuURL}/add`, {
+            membership: membershipNumber,
+            zipcode: zipCode,
+            stateName: stateName,
+            requestType: requestType,
+          }).then((res) => {
+            console.log(res);
+          });
           document.getElementById("input_membership_num").value = "";
           document.getElementById("input_zipcode").value = "";
           setRequestType("");
-          // activeRequest.map((request) => {
-          //   if (request === 1) setActiveRequest[request] = 0;
+          // activeRequest.forEach((request) => {
+          //   activeRequest[request] = 0;
           // });
-          activeRequest.forEach((request) => {
-            activeRequest[request] = 0;
-          });
         });
     }
   }
