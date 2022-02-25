@@ -3,15 +3,13 @@ import Axios from "axios";
 import "../style/home.scss";
 import RequestType from "../components/RequestType";
 
-function Home() {
+function Home({ herokuURL }) {
   const [membershipNumber, setMembershipNumber] = useState("");
   const [zipCode, setZipCode] = useState("11111");
   const [requestType, setRequestType] = useState("");
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [isRequestActive, setIsRequestActive] = useState(false);
   const activeRequest = [0, 0, 0, 0, 0, 0, 0, 0];
-
-  const herokuURL = "https://aaa-data.herokuapp.com";
   const localhost = "http://localhost:3001";
 
   const serviceName = [
@@ -48,8 +46,6 @@ function Home() {
       "https://drrweb.national.aaa.com/assets/images/icons/car%20wont%20start.svg",
     TOW: "https://drrweb.national.aaa.com/assets/images/icons/tow-small.svg",
   };
-  const ZIP_API_URL = "https://service.zipapi.us/zipcode/";
-  const ZIP_API_KEY = "f51d56d33e3fb8f1b5094821c1125ad9";
 
   function handleSubmit(e) {
     e.preventDefault();

@@ -2,13 +2,12 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import "../style/history.scss";
 
-function History() {
-  const herokuURL = "https://aaa-data.herokuapp.com/";
+function History({ herokuURL }) {
   const localhost = "http://localhost:3001";
   const [history, setHistory] = useState([]);
   // console.log(history);
   useEffect(() => {
-    Axios.get(herokuURL + "getHistory").then((data) => {
+    Axios.get(herokuURL + "/getHistory").then((data) => {
       setHistory(data.data);
     });
   }, []);

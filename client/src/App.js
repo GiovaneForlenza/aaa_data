@@ -8,15 +8,16 @@ import History from "./pages/History";
 function App() {
   const [selectedPage, setSelectedPage] = useState("home");
 
+  const herokuURL = "https://aaa-data.herokuapp.com";
   return (
     <div className="App">
       <NavBar setSelectedPage={setSelectedPage} />
       {selectedPage === "home" ? (
-        <Home />
+        <Home herokuURL={herokuURL} />
       ) : selectedPage === "history" ? (
-        <History />
+        <History herokuURL={herokuURL} />
       ) : (
-        <Data />
+        <Data herokuURL={herokuURL} />
       )}
     </div>
   );
