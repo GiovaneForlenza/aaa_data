@@ -1,0 +1,1 @@
+CREATE TABLE `aaa_data` ( `id` int(11) NOT NULL AUTO_INCREMENT, `club_code_1` varchar(5) DEFAULT NULL, `club_code_2` varchar(5) DEFAULT NULL, `zipcode` varchar(10) DEFAULT NULL, `state_name` varchar(255) DEFAULT NULL, `service_type` varchar(45) DEFAULT NULL, PRIMARY KEY (`id`), KEY `index2` (`state_name`) ) ENGINE=InnoDB AUTO_INCREMENT=8904 DEFAULT CHARSET=utf8
