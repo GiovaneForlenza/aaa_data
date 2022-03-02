@@ -11,9 +11,10 @@ function Data({ herokuURL }) {
     region: "US",
     displayMode: "regions",
     resolution: "provinces",
-    colorAxis: { colors: ["#DAE3F3", "#2F5597"] },
+    colorAxis: { colors: ["#DAE3F3", , "#92D050"] },
     datalessRegionColor: "#f8bbd0",
     defaultColor: "#f5f5f5",
+    sliceVisibilityThreshold: 0.05,
   };
 
   const [showMap, setShowMap] = useState(false);
