@@ -73,10 +73,10 @@ app.post("/add", (req, res) => {
   );
 });
 
-setInterval(function () {
-  db.query("SELECT 1");
-}, 5000);
+// setInterval(function () {
+//   db.query("SELECT 1");
+// }, 5000);
 
-app.listen(process.env.PORT || PORT, '0.0.0.0', () => {
+app.listen(process.env.PORT || PORT, "0.0.0.0", () => {
   console.log(`running server on ${PORT}`);
 });
